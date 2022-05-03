@@ -30,7 +30,9 @@
 Newman, Sam. Monolith to Microservices (p. 21). O'Reilly Media.
 
 **Single process**
-<img src="./.github/single_process.png" style="background-color:#FFF" />
+<div style="background:#FFF">
+<img src="./.github/single_process.png" />
+</div>
 
 - Alto acoplamento. (Dependencia forte entre classes/modulos)
 - Modular
@@ -75,7 +77,9 @@ Contextos
 - Programa de pontos [beneficiario]
 - Lista de casamento [convidado]
 
+<div style="background:#FFF">
 <img src=".github/modules_monolith.png" style="background-color:#FFF" />
+</div>
 
 #### Sistemas monolíticos modulares
 - Módulos quebrados em "bounded contexts"
@@ -86,4 +90,6 @@ Contextos
 
 #### Sistemas monolíticos modulares com bancos segregados
 
+<div style="background:#FFF">
 <img src=".github/modules_monolith_database_segregation.png" style="background-color:#FFF" />
+</div>
