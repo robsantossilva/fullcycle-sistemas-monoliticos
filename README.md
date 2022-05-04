@@ -30,8 +30,8 @@
 Newman, Sam. Monolith to Microservices (p. 21). O'Reilly Media.
 
 **Single process**
-<div style="background:#FFF">
-<img src="./.github/single_process.png" />
+<div style="background:#EEE; text-align:center;">
+<img src="./.github/single_process.png" style="position:relative;" />
 </div>
 
 - Alto acoplamento. (Dependencia forte entre classes/modulos)
@@ -77,8 +77,8 @@ Contextos
 - Programa de pontos [beneficiario]
 - Lista de casamento [convidado]
 
-<div style="background:#FFF">
-<img src=".github/modules_monolith.png" style="background-color:#FFF" />
+<div style="background:#EEE; text-align:center;">
+<img src=".github/modules_monolith.png" style="position:relative;" />
 </div>
 
 #### Sistemas monolíticos modulares
@@ -90,6 +90,24 @@ Contextos
 
 #### Sistemas monolíticos modulares com bancos segregados
 
-<div style="background:#FFF">
-<img src=".github/modules_monolith_database_segregation.png" style="background-color:#FFF" />
+<div style="background:#EEE; text-align:center;">
+<img src=".github/modules_monolith_database_segregation.png" style="position:relative;" />
 </div>
+
+<br><br>
+
+**Se é para segregar tanto, não é melhor já trabalhar com microsserviços?**
+
+#### Sistemas monolíticos modulares
+
+- Um único deploy
+- Única operação
+- Observabilidade simplificada
+- Sistemas se comunicando internamente
+- Única linguagem. Menos governança
+- ...
+
+### Shared Kernel
+
+- Núcleo compartilhado entre módules que faz parte do projeto.
+- Politicas claras de atualizações
