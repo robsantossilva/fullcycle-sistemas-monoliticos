@@ -111,3 +111,32 @@ Contextos
 
 - Núcleo compartilhado entre módules que faz parte do projeto.
 - Politicas claras de atualizações
+
+### Relembrando DDD
+
+- Linguagem Universal
+- Dominio
+- Dominio quebrado em subdominios. Dominio principal e subdominios auxiliares/genericos
+- Shared Kernel, Camadas anticorrupção.
+- Cada contexto possui seu universo e que pode conversar com outros contextos.
+
+### CodeStore - Context Map
+
+- store-catalog - (Dominio Principal)
+- product-adm - (Dominio Auxiliar)
+- customer-adm - (Dominio Auxiliar)
+- checkout - (Dominio Auxiliar)
+- payment - (Pode ser Dominio Generico ou Auxiliar dependendo da criticidade/estrategia)
+- invoice - (Pode ser Dominio Generico ou Auxiliar dependendo da criticidade/estrategia)
+
+### Comunicação entre módulos
+
+Uma forma de fazer com que esses Modulos se comuniquem em uma aplicação monolitica, sem gerar acoplamento, é através de **Facade / Fachada**
+
+### Comunicação interna vs externa
+
+Camada de infraestrutura chamada de API - Controllers (cross customs)
+Caso de Uso não pode chamar Caso de Uso e sim por meio de uma Fachada
+Um módullo é cliente de outro módulo por meio das Fachadas (Facades)
+
+![.github/app-modular.JPG](.github/app-modular.JPG)
