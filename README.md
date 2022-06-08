@@ -140,3 +140,4 @@ Caso de Uso não pode chamar Caso de Uso e sim por meio de uma Fachada
 Um módullo é cliente de outro módulo por meio das Fachadas (Facades)
 
 ![.github/app-modular.JPG](.github/app-modular.JPG)
+
