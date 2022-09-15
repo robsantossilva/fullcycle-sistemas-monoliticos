@@ -40,7 +40,7 @@ export default class GenerateInvoiceUseCase {
     });
 
     const invoice = new Invoice({
-      id: new Id(),
+      id: new Id(input.id),
       document: input.document,
       name: input.name,
       total,
