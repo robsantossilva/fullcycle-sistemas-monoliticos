@@ -1,4 +1,5 @@
 import { Sequelize } from "sequelize-typescript";
+import InvoiceFacadeFactory from "../factory/facade.factory";
 import { InvoiceModel } from "../repository/invoice.model";
 import InvoiceRepository from "../repository/invoice.repository";
 import { ProductModel } from "../repository/product.model";
@@ -26,12 +27,8 @@ describe("InvoiceFacade test", () => {
     await sequelize.close();
   });
 
-  it("should generate a invoice", async () => {
-    const repository = new InvoiceRepository();
-    const facade = new InvoiceFacade({
-      generateInvoiceUseCase: new GenerateInvoiceUseCase(repository),
-      findInvoiceUseCase: new FindInvoiceUseCase(repository),
-    });
+  it("should generate and find a invoice", async () => {
+    const facade = InvoiceFacadeFactory.create();
 
     const input: GenerateInvoiceFacadeInputDTO = {
       id: "1",
@@ -58,8 +55,9 @@ describe("InvoiceFacade test", () => {
     };
 
     await facade.generate(input);
-    const result = await InvoiceModel.findOne({ where: { id: "1" } });
-    const items = await ProductModel.findAll({ where: { invoiceId: "1" } });
+    const result = await facade.find({ id: "1" });
+    // const result = await InvoiceModel.findOne({ where: { id: "1" } });
+    // const items = await ProductModel.findAll({ where: { invoiceId: "1" } });
 
     expect(result.id).toBeDefined();
     expect(input.document).toBe(result.document);
@@ -68,17 +66,17 @@ describe("InvoiceFacade test", () => {
       result.total
     );
 
-    expect(input.street).toStrictEqual(result.street);
-    expect(input.number).toStrictEqual(result.number);
-    expect(input.complement).toStrictEqual(result.complement);
-    expect(input.city).toStrictEqual(result.city);
-    expect(input.state).toStrictEqual(result.state);
-    expect(input.zipCode).toStrictEqual(result.zipCode);
+    expect(input.street).toStrictEqual(result.address.street);
+    expect(input.number).toStrictEqual(result.address.number);
+    expect(input.complement).toStrictEqual(result.address.complement);
+    expect(input.city).toStrictEqual(result.address.city);
+    expect(input.state).toStrictEqual(result.address.state);
+    expect(input.zipCode).toStrictEqual(result.address.zipCode);
 
-    for (let i = 0; i < items.length; i++) {
-      expect(input.items[i].id).toStrictEqual(items[i].id);
-      expect(input.items[i].name).toStrictEqual(items[i].name);
-      expect(input.items[i].price).toStrictEqual(items[i].price);
+    for (let i = 0; i < result.items.length; i++) {
+      expect(input.items[i].id).toStrictEqual(result.items[i].id);
+      expect(input.items[i].name).toStrictEqual(result.items[i].name);
+      expect(input.items[i].price).toStrictEqual(result.items[i].price);
     }
   });
 });

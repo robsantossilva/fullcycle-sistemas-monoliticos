@@ -36,4 +36,12 @@ export default class Order extends BaseEntity {
       0
     );
   }
+
+  get status(): string {
+    return this._status;
+  }
+
+  approved() {
+    this._status = "approved";
+  }
 }

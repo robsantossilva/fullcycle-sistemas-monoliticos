@@ -39,7 +39,13 @@ describe("ClientRepository test", () => {
       id: new Id("1"),
       name: "Client 1",
       email: "x@x.com",
-      address: "Address 1",
+      document: "12345678989",
+      street: "Rua Janeiro",
+      number: "15",
+      complement: "complemento",
+      city: "Jandira ",
+      state: "SP",
+      zipCode: "12345698",
       createdAt: new Date(),
       updatedAt: new Date(),
     });
@@ -55,7 +61,13 @@ describe("ClientRepository test", () => {
     expect(clientDb.id).toBe(client.id.id);
     expect(clientDb.name).toBe(client.name);
     expect(clientDb.email).toBe(client.email);
-    expect(clientDb.address).toBe(client.address);
+    expect(clientDb.document).toBe(client.document);
+    expect(clientDb.street).toBe(client.street);
+    expect(clientDb.number).toBe(client.number);
+    expect(clientDb.complement).toBe(client.complement);
+    expect(clientDb.city).toBe(client.city);
+    expect(clientDb.state).toBe(client.state);
+    expect(clientDb.zipCode).toBe(client.zipCode);
     expect(clientDb.createdAt).toStrictEqual(client.createdAt);
     expect(clientDb.updatedAt).toStrictEqual(client.updatedAt);
   });
@@ -65,7 +77,13 @@ describe("ClientRepository test", () => {
       id: new Id("1"),
       name: "Client 1",
       email: "x@x.com",
-      address: "Address 1",
+      document: "12345678989",
+      street: "Rua Janeiro",
+      number: "15",
+      complement: "complemento",
+      city: "Jandira ",
+      state: "SP",
+      zipCode: "12345698",
     });
 
     const repository = new ClientRepository();
@@ -77,6 +95,12 @@ describe("ClientRepository test", () => {
     expect(result.id.id).toBe(client.id.id);
     expect(result.name).toBe(client.name);
     expect(result.email).toBe(client.email);
-    expect(result.address).toBe(client.address);
+    expect(result.document).toBe(client.document);
+    expect(result.street).toBe(client.street);
+    expect(result.number).toBe(client.number);
+    expect(result.complement).toBe(client.complement);
+    expect(result.city).toBe(client.city);
+    expect(result.state).toBe(client.state);
+    expect(result.zipCode).toBe(client.zipCode);
   });
 });

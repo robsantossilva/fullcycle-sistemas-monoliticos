@@ -2,64 +2,87 @@ import { Sequelize } from "sequelize-typescript";
 import ClientAdmFacadeFactory from "../factory/facade.factory";
 import { ClientModel } from "../repository/client.model";
 
-
 describe("ClientAdmFacade test", () => {
-    let sequelize: Sequelize;
+  let sequelize: Sequelize;
 
-    beforeEach(async () => {
-        sequelize = new Sequelize({
-        dialect: "sqlite",
-        storage: ":memory:",
-        logging: false,
-        sync: { force: true },
-        });
-
-        await sequelize.addModels([ClientModel]);
-        await sequelize.sync();
+  beforeEach(async () => {
+    sequelize = new Sequelize({
+      dialect: "sqlite",
+      storage: ":memory:",
+      logging: false,
+      sync: { force: true },
     });
 
-    afterEach(async () => {
-        await sequelize.close();
-    });
+    await sequelize.addModels([ClientModel]);
+    await sequelize.sync();
+  });
 
-    it("should create a client", async () => {
-        const facade = ClientAdmFacadeFactory.create();
+  afterEach(async () => {
+    await sequelize.close();
+  });
 
-        const input = {
-            id: "1",
-            name: "Client 1",
-            email: "x@x.com",
-            address: "Address 1",
-        };
+  it("should create a client", async () => {
+    const facade = ClientAdmFacadeFactory.create();
 
-        await facade.add(input);
+    const input = {
+      id: "1",
+      name: "Client 1",
+      email: "x@x.com",
+      document: "12345678989",
+      street: "Rua Janeiro",
+      number: "15",
+      complement: "complemento",
+      city: "Jandira ",
+      state: "SP",
+      zipCode: "12345698",
+    };
 
-        const client = await ClientModel.findOne({ where: { id: "1" } });
+    await facade.add(input);
 
-        expect(client).toBeDefined();
-        expect(client!.name).toBe(input.name);
-        expect(client!.email).toBe(input.email);
-        expect(client!.address).toBe(input.address);
-    });
+    const client = await ClientModel.findOne({ where: { id: "1" } });
 
-    it("it should find a client", async () => {
-        const facade = ClientAdmFacadeFactory.create();
+    expect(client).toBeDefined();
+    expect(client!.name).toBe(input.name);
+    expect(client!.email).toBe(input.email);
+    expect(client!.document).toBe(input.document);
+    expect(client!.street).toBe(input.street);
+    expect(client!.number).toBe(input.number);
+    expect(client!.complement).toBe(input.complement);
+    expect(client!.city).toBe(input.city);
+    expect(client!.state).toBe(input.state);
+    expect(client!.zipCode).toBe(input.zipCode);
+  });
 
-        const input = {
-            id: "1",
-            name: "Client 1",
-            email: "x@x.com",
-            address: "Address 1",
-        };
+  it("it should find a client", async () => {
+    const facade = ClientAdmFacadeFactory.create();
 
-        await facade.add(input);
+    const input = {
+      id: "1",
+      name: "Client 1",
+      email: "x@x.com",
+      document: "12345678989",
+      street: "Rua Janeiro",
+      number: "15",
+      complement: "complemento",
+      city: "Jandira ",
+      state: "SP",
+      zipCode: "12345698",
+    };
 
-        const client = await facade.find({ id: "1" });
+    await facade.add(input);
 
-        expect(client).toBeDefined();
-        expect(client!.id).toBe(input.id);
-        expect(client!.name).toBe(input.name);
-        expect(client!.email).toBe(input.email);
-        expect(client!.address).toBe(input.address);
-    });
+    const client = await facade.find({ id: "1" });
+
+    expect(client).toBeDefined();
+    expect(client!.id).toBe(input.id);
+    expect(client!.name).toBe(input.name);
+    expect(client!.email).toBe(input.email);
+    expect(client!.document).toBe(input.document);
+    expect(client!.street).toBe(input.street);
+    expect(client!.number).toBe(input.number);
+    expect(client!.complement).toBe(input.complement);
+    expect(client!.city).toBe(input.city);
+    expect(client!.state).toBe(input.state);
+    expect(client!.zipCode).toBe(input.zipCode);
+  });
 });
