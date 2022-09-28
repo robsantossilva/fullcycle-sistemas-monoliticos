@@ -1,0 +1,26 @@
+POST http://localhost:3000/products
+Content-Type: application/json
+
+{
+  "description":"Desc",
+  "name":"Product 1",
+  "purchasePrice": 2.90,
+  "stock": 10
+}
+
+####
+
+POST http://localhost:3000/clients
+Content-Type: application/json
+
+{
+  "name":"",
+  "email":"robson@gmail.com",
+  "document":"12345678989",
+  "street":"Rua Janeiro",
+  "number":"15",
+  "complement":"complemento",
+  "city":"Jandira",
+  "state":"SP",
+  "zipCode":"06655987"
+}
