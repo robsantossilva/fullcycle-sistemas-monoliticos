@@ -4,14 +4,14 @@ import AddClientUseCase from "../usecase/add-client/add-client.usecase";
 import FindClientUseCase from "../usecase/find-client/find-client.usecase";
 
 export default class ClientAdmFacadeFactory {
-    static create() {
-        const repository = new ClientRepository();
-        const findClientUseCase = new FindClientUseCase(repository);
-        const addClientUseCase = new AddClientUseCase(repository);
+  static create(): ClientAdmFacade {
+    const repository = new ClientRepository();
+    const findClientUseCase = new FindClientUseCase(repository);
+    const addClientUseCase = new AddClientUseCase(repository);
 
-        return new ClientAdmFacade({
-            findUseCase: findClientUseCase,
-            addUseCase: addClientUseCase,
-        });
-    }
+    return new ClientAdmFacade({
+      findUseCase: findClientUseCase,
+      addUseCase: addClientUseCase,
+    });
+  }
 }

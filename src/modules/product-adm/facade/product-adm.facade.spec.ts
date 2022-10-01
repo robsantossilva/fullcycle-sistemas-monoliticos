@@ -1,24 +1,37 @@
 import { Sequelize } from "sequelize-typescript";
 import ProductAdmFacadeFactory from "../factory/facade.factory";
 import { ProductModel } from "../repository/product.model";
+import { ProductModel as StoreCatalogProductModel } from "../../store-catalog/repository/product.model";
 
 describe("ProductAdmFacade test", () => {
-  let sequelize: Sequelize;
+  let sequelize1: Sequelize;
+  let sequelize2: Sequelize;
 
   beforeEach(async () => {
-    sequelize = new Sequelize({
+    sequelize1 = new Sequelize({
       dialect: "sqlite",
       storage: ":memory:",
       logging: false,
       sync: { force: true },
     });
 
-    await sequelize.addModels([ProductModel]);
-    await sequelize.sync();
+    await sequelize1.addModels([ProductModel]);
+    await sequelize1.sync();
+
+    sequelize2 = new Sequelize({
+      dialect: "sqlite",
+      storage: ":memory:",
+      logging: false,
+      sync: { force: true },
+    });
+
+    await sequelize2.addModels([StoreCatalogProductModel]);
+    await sequelize2.sync();
   });
 
   afterEach(async () => {
-    await sequelize.close();
+    await sequelize1.close();
+    await sequelize2.close();
   });
 
   it("should create a product", async () => {
@@ -36,6 +49,7 @@ describe("ProductAdmFacade test", () => {
       name: "Product 1",
       description: "Product 1 description",
       purchasePrice: 10,
+      salesPrice: 12,
       stock: 10,
     };
 
@@ -57,6 +71,7 @@ describe("ProductAdmFacade test", () => {
       name: "Product 1",
       description: "Product 1 description",
       purchasePrice: 10,
+      salesPrice: 12,
       stock: 10,
     };
 
@@ -67,5 +82,4 @@ describe("ProductAdmFacade test", () => {
     expect(result.productId).toBe(input.id);
     expect(result.stock).toBe(input.stock);
   });
-
 });
