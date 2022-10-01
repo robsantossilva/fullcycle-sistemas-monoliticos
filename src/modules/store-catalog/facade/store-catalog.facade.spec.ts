@@ -21,6 +21,26 @@ describe("StoreCatalogFacade test", () => {
     await sequelize.close();
   });
 
+  it("should create a product", async () => {
+    const storeCatalogFacade = StoreCatalogFacadeFactory.create();
+
+    const input = {
+      id: "1",
+      name: "Product 1",
+      description: "Product 1 description",
+      salesPrice: 10,
+    };
+
+    await storeCatalogFacade.addProduct(input);
+
+    const product = await ProductModel.findOne({ where: { id: "1" } });
+    expect(product).toBeDefined();
+    expect(product.id).toBe(input.id);
+    expect(product.name).toBe(input.name);
+    expect(product.description).toBe(input.description);
+    expect(product.salesPrice).toBe(input.salesPrice);
+  });
+
   it("it should find a product", async () => {
     const facade = StoreCatalogFacadeFactory.create();
 

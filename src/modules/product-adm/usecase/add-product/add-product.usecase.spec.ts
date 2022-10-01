@@ -9,13 +9,20 @@ const MockRepository = () => {
 
 describe("Add Product usecase unit test", () => {
   it("should add a product", async () => {
+    const mockCatalogFacade = {
+      find: jest.fn().mockResolvedValue(null),
+      addProduct: jest.fn(),
+      findAll: jest.fn(),
+    };
+
     const productRepository = MockRepository();
-    const usecase = new AddProductUseCase(productRepository);
+    const usecase = new AddProductUseCase(productRepository, mockCatalogFacade);
 
     const input = {
       name: "Product 1",
       description: "Product 1 description",
       purchasePrice: 100,
+      salesPrice: 120,
       stock: 10,
     };
 

@@ -1,0 +1,44 @@
+POST http://localhost:3000/products
+Content-Type: application/json
+
+{
+  "description":"Desc",
+  "name":"Product 1",
+  "purchasePrice": 102.90,
+  "salesPrice": 123.20,
+  "stock": 10
+}
+
+####
+
+POST http://localhost:3000/clients
+Content-Type: application/json
+
+{
+  "name":"Robson Silva",
+  "email":"robson@gmail.com",
+  "document":"12345678989",
+  "street":"Rua Janeiro",
+  "number":"15",
+  "complement":"complemento",
+  "city":"Jandira",
+  "state":"SP",
+  "zipCode":"06655987"
+}
+
+####
+
+POST http://localhost:3000/checkout
+Content-Type: application/json
+
+{
+  "clientId": "f4b8343b-57f3-4eab-ad0c-aefd0bf59a93",
+  "products": [
+    "fdc51302-827d-4abd-8910-4d0aa94c9b05"
+  ]
+}
+
+####
+
+GET http://localhost:3000/invoice/2a07f7bb-2b9d-4dec-a75f-46cad47faa6c
+Content-Type: application/json
