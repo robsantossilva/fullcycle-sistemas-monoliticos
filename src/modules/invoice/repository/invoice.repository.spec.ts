@@ -105,7 +105,7 @@ describe("InvoiceRepository test", () => {
     expect(invoiceDb.zipCode).toStrictEqual(invoice.address.zipCode);
 
     for (let i = 0; i < itemsDb.length; i++) {
-      expect(itemsDb[i].id).toStrictEqual(invoice.items[i].id.id);
+      expect(itemsDb[i].productId).toStrictEqual(invoice.items[i].id.id);
       expect(itemsDb[i].name).toStrictEqual(invoice.items[i].name);
       expect(itemsDb[i].price).toStrictEqual(invoice.items[i].price);
       expect(itemsDb[i].createdAt).toStrictEqual(invoice.items[i].createdAt);

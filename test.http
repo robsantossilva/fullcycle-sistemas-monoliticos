@@ -32,13 +32,18 @@ POST http://localhost:3000/checkout
 Content-Type: application/json
 
 {
-  "clientId": "f4b8343b-57f3-4eab-ad0c-aefd0bf59a93",
+  "clientId": "d80988a7-a11e-4957-98a2-2e6c077385d3",
   "products": [
-    "fdc51302-827d-4abd-8910-4d0aa94c9b05"
+    "bedf09e7-b9b7-41a3-8256-92c09bca7def"
   ]
 }
 
 ####
 
-GET http://localhost:3000/invoice/2a07f7bb-2b9d-4dec-a75f-46cad47faa6c
+GET http://localhost:3000/invoice/685b5631-b33a-4968-912f-d349d7b41ab7
+Content-Type: application/json
+
+####
+
+GET http://localhost:3000/invoice?id=685b5631-b33a-4968-912f-d349d7b41ab7
 Content-Type: application/json

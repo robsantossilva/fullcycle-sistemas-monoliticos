@@ -91,7 +91,7 @@ describe("ClientRepository test", () => {
     expect(orderDb.createdAt).toStrictEqual(order.createdAt);
     expect(orderDb.updatedAt).toStrictEqual(order.updatedAt);
 
-    expect(productsDb[0].id).toBe(product.id.id);
+    expect(productsDb[0].productId).toBe(product.id.id);
     expect(productsDb[0].name).toBe(product.name);
     expect(productsDb[0].description).toBe(product.description);
     expect(productsDb[0].salesPrice).toBe(product.salesPrice);

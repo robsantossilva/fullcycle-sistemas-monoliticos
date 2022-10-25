@@ -25,7 +25,8 @@ export default class InvoiceRepository implements InvoiceGateway {
 
     const productModelPromises = invoice.items.map((product) =>
       ProductModel.create({
-        id: product.id.id,
+        id: new Id().id,
+        productId: product.id.id,
         invoiceId: invoice.id.id,
         name: product.name,
         price: product.price,
@@ -73,7 +74,7 @@ export default class InvoiceRepository implements InvoiceGateway {
       items: products.map(
         (p) =>
           new Product({
-            id: new Id(p.id),
+            id: new Id(p.productId),
             name: p.name,
             price: p.price,
             createdAt: p.createdAt,
