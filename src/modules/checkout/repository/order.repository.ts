@@ -1,3 +1,4 @@
+import Id from "../../@shared/domain/value-object/id.value-object";
 import Order from "../domain/order.entity";
 import CheckoutGateway from "../gateway/checkout.gateway";
 import { OrderModel } from "./order.model";
@@ -12,7 +13,8 @@ export default class OrderRepository implements CheckoutGateway {
     await Promise.all(
       order.products.map((p) =>
         ProductModel.create({
-          id: p.id.id,
+          id: new Id().id,
+          productId: p.id.id,
           orderId: order.id.id,
           name: p.name,
           description: p.description,

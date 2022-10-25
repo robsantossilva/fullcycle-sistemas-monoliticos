@@ -42,19 +42,19 @@ Newman, Sam. Monolith to Microservices (p. 21). O'Reilly Media.
 
 De uma forma ou de outra tudo se relaciona com User
 
-User| - 
----|---
-Dados pessoais | Email mkt
-Endereços| Campanhas
-Cartões de crédito| Favoritos
-Tickets de suporte| Lista de casamento
-Compras| Historico de login
-Carrinho abandonado| Lista de preferencias de emails
-Devoluções| Avaliação de produtos
-Financiamento| CRM
-Indicações| Propostas
-Reclamações| Lances / Leilão
-Cartão de Pontos |
+| User                | -                               |
+| ------------------- | ------------------------------- |
+| Dados pessoais      | Email mkt                       |
+| Endereços           | Campanhas                       |
+| Cartões de crédito  | Favoritos                       |
+| Tickets de suporte  | Lista de casamento              |
+| Compras             | Historico de login              |
+| Carrinho abandonado | Lista de preferencias de emails |
+| Devoluções          | Avaliação de produtos           |
+| Financiamento       | CRM                             |
+| Indicações          | Propostas                       |
+| Reclamações         | Lances / Leilão                 |
+| Cartão de Pontos    |
 
 #### Principais problemas com essa abordagem
 
